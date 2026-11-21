@@ -9,19 +9,19 @@ Learning GPU performance engineering, one measured experiment at a time.
 
 | | |
 |---|---|
-| GPU | NVIDIA Tesla T4 (Google Colab) |
-| GPU memory | 15 GB |
-| Peak fp32 compute | ~8 TFLOPS (verify against NVIDIA datasheet) |
-| Peak fp16 (tensor cores) | ~65 TFLOPS (verify against NVIDIA datasheet) |
-| Memory bandwidth | ~320 GB/s (verify against NVIDIA datasheet) |
-| CPU | (fill in later) |
+| GPU | NVIDIA Tesla T4 (Google Colab), Turing architecture |
+| CUDA cores / Tensor cores | 2,560 / 320 |
+| GPU memory | 16 GB GDDR6 (15 GiB visible in Colab) |
+| Peak fp32 compute | 8.1 TFLOPS |
+| Peak fp16 (tensor cores) | 65 TFLOPS |
+| Memory bandwidth | 300 GB/s |
+| Source | NVIDIA T4 datasheet |
 
 ## Roofline note
 
-Machine balance = peak compute / memory bandwidth = 8,000 GFLOPS / 320 GB/s ≈ 25 FLOPs per byte.
-Programs doing fewer than about 25 operations per byte moved are memory-bound on this GPU;
-programs doing more can become compute-bound.
+Machine balance = peak compute / memory bandwidth.
+- fp32: 8,100 GFLOPS / 300 GB/s = 27 FLOPs per byte
+- fp16 (tensor cores): 65,000 GFLOPS / 300 GB/s ≈ 217 FLOPs per byte
 
-## Log
-
+Programs doing fewer operations per byte than this are memory-bound; programs doing more can become compute-bound.
 - **Week 1:** CPU and GPU matrix multiplication baselines (in progress)
