@@ -1,3 +1,10 @@
+## Log20261121
+
+- **Week 1, Day 1:** Set up Colab with a Tesla T4; verified specs against the NVIDIA datasheet.
+- **Week 1, Day 2:** Matrix multiplication, n = 200 (2n³ = 16 million operations), float32:
+  - Pure Python: 0.0262 GFLOPS (0.61 s)
+  - NumPy: 2.80 GFLOPS (5.71 ms), about 107x faster
+  - Max difference between the two: 6.2e-5 (float32 rounding)
 # GPU Performance Journey
 
 Learning GPU performance engineering, one measured experiment at a time.
